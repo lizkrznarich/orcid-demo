@@ -26,12 +26,18 @@ def edit_spreadsheet(sheets_client, drive_file, orcid_data):
     drive_file_FileId = drive_file.get('id')
     drive_file_worksheet = sheets_client.open_by_key(drive_file_FileId).sheet1
     orcid_record_col = drive_file_worksheet.find('ORCID Records').col
+    doi_orcid_count = 0
     for doi in orcid_data:
       try:
         doi_match_row = drive_file_worksheet.find(doi[0]).row
         drive_file_worksheet.update_cell(doi_match_row, orcid_record_col, doi[1])
+        doi_orcid_count += 1 
       except:
         pass
+
+    total_linked_orcid_row = drive_file_worksheet.find('Items linked to at least 1 ORCID iD').row
+    drive_file_worksheet.update_cell(total_linked_orcid_row, 2, doi_orcid_count)   
+
 
 
 

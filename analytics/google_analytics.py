@@ -41,20 +41,25 @@ def run_query(service, start_date, end_date, metrics, dimensions, filters):
 
     return api_query.execute()
 
-def create_csv(service, report_date, start_date, end_date):
+def create_csv(service, report_date, start_date, end_date, dois):
     # Open temp csv file to write data
     filedata = io.BytesIO()
     writer = csv.writer(filedata)
+    #Run Google Analytics query
+    data = run_query(service, start_date, end_date, 'ga:totalEvents', 'ga:eventLabel', 'ga:eventAction==download')
+    rows = data.get('rows')
     #1. Write client-report data to csv
     writer.writerow(["My Fancy Analytics Report!"])
     writer.writerow(["Generated on " + report_date])
     writer.writerow(["Data for " + start_date + " to " + end_date])
     writer.writerow([])
-    #2.GA data
-    data = run_query(service, start_date, end_date, 'ga:totalEvents', 'ga:eventLabel', 'ga:eventAction==download')
-    writer.writerow(["Events"])
+    writer.writerow(["Aggregate Data"])
+    writer.writerow(["Items in repository", len(dois)])
+    writer.writerow(["Items downloaded at least once", len(rows)])
+    writer.writerow(["Items linked to at least 1 ORCID iD"])
+    writer.writerow([])
+    writer.writerow(["Item Data"])
     writer.writerow(["DOI", "Downloads", "ORCID Records"])
-    rows = data.get('rows')
     if rows is not None:
         for r in rows:
             writer.writerow([r[0], r[1]])
