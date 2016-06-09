@@ -59,7 +59,7 @@ def create_csv(service, report_date, start_date, end_date, dois):
     writer.writerow(["Items linked to at least 1 ORCID iD"])
     writer.writerow([])
     writer.writerow(["Item Data"])
-    writer.writerow(["DOI", "Downloads", "ORCID Records"])
+    writer.writerow(["DOI", "Downloads", "ORCID Records with this DOI"])
     if rows is not None:
         for r in rows:
             writer.writerow([r[0], r[1]])

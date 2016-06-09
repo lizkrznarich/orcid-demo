@@ -25,7 +25,7 @@ def create_sheets_client(scope):
 def edit_spreadsheet(sheets_client, drive_file, orcid_data):
     drive_file_FileId = drive_file.get('id')
     drive_file_worksheet = sheets_client.open_by_key(drive_file_FileId).sheet1
-    orcid_record_col = drive_file_worksheet.find('ORCID Records').col
+    orcid_record_col = drive_file_worksheet.find('ORCID Records with this DOI').col
     doi_orcid_count = 0
     for doi in orcid_data:
       try:
