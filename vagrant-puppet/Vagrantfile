@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+
+  # Base system to build from – see list at https://atlas.hashicorp.com/boxes/search
+  config.vm.box = "ubuntu/trusty64"
+
+  # Forward a port from host to guest so that you can run a server
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Sync a host directory to a location on the guest
+  config.vm.synced_folder "./my-project", "/var/www/html"
+
+  # Enable the Puppet provisioner and specify the manifest location
+  config.vm.provision :puppet do |puppet|     
+    puppet.manifests_path = "puppet/manifests"  
+    puppet.options = ['--verbose'] 
+  end
+
+end
