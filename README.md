@@ -3,7 +3,6 @@ Materials from presentations by Liz Krznarich (Software Engineer/UI Designer, OR
 
 ###Developer Track 1: Platforms and Analytics
 Tues, 14 June 2016, 11am-12:30pm
-
 [Beyond the Dashboard: Customized Analytics Reporting with Google APIs](/analytics)
 
 ###Papers 7: Identify yourself! Identifiers and attribution
@@ -12,5 +11,4 @@ Don’t get irritated, get automated! Accelerating repository workflow with ORCI
 
 ###Developer Track 5: Vagrant up!
 Thurs, 16 June 2016, 11am-12:30pm
-
 [Standardizing Local Development Environments with Vagrant and Puppet](vagrant-puppet)
