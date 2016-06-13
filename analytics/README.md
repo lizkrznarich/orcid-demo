@@ -102,3 +102,12 @@ Run the build_report.py script, passing in the appropriate arguments:
 **--start_date** Start date for Google Analytics queries YYYY-mm-dd
 
 **--end_date**  End date for Google Analytics queries YYYY-mm-dd
+
+##Resources
+- [Google Analytics Query Explorer](https://ga-dev-tools.appspot.com/quer y-explorer/)
+- [Google Analytics Core Reporting API documentation](https://developers.google.com/analytics/devguides/reporting/core/v3)
+- [Google Drive API documentation](https://developers.google.com/drive/v3)
+- [ORCID Search API documentation](https://members.orcid.org/api/tutorial-searching-api-12-and-earlier)
+- [Gspread documentation](http://gspread.readthedocs.io)
+- [Google Sheets API documentation](https://developers.google.com/sheets)
+- [Google Charts API documentation](https://developers.google.com/chart)
