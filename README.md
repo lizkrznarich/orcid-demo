@@ -9,9 +9,9 @@ Tues, 14 June 2016, 11am-12:30pm
 ###Papers 7: Identify yourself! Identifiers and attribution
 Wed, 15 June 2016, 9am-10:30am
 
-Don’t get irritated, get automated! Accelerating repository workflow with ORCID, Crossref and Datacite
+[Don’t get irritated, get automated! Accelerating repository workflow with ORCID, Crossref and Datacite](liz-or2016-auto-update.pdf)
 
 ###Developer Track 5: Vagrant up!
 Thurs, 16 June 2016, 11am-12:30pm
 
-[Standardizing Local Development Environments with Vagrant and Puppet](vagrant-puppet)
+[Standardizing Local Development Environments with Vagrant and Puppet](/vagrant-puppet)
