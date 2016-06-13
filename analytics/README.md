@@ -1,13 +1,13 @@
 #Beyond the Dashboard: Customized Analytics Reporting with Google APIs
 Python script for a demo presented at OR2016. This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as well as the ORCID Public API, to generate a custom analytics report, upload it to Drive and add external data from ORCID.
 
-Presentation slides
+See the [slides](orcid-or2016-ga.pdf) for a complete tutorial!
 
 ## Demo site
 A demo site that has Google Analytics tracking configured and displays data using this script is located at http://orcid.github.io/or2016-ga
 
 ## Pre-requisites 
-See the slides for a step-by-step guide!
+This list is daunting. See the [slides](orcid-or2016-ga.pdf) for a step-by-step guide (with pictures!)
 
 1. Create a [Google Analytics](https://analytics.google.com) account and set up tracking for your website
 2. Develop Google Analytics queries using the [Analytics API](https://developers.google.com/analytics/devguides/reporting/core/v3/reference)
@@ -20,15 +20,33 @@ See the slides for a step-by-step guide!
 
 
 ## Set up virtual environment 
-The project contains a requirements.txt file that allows you to run the scripts using a [Python Virtual Environment](http://docs.python-guide.org/en/latest/dev/virtualenvs)
+The project contains a requirements.txt file that allows you to run the scripts using a [Python Virtual Environment](http://docs.python-guide.org/en/latest/dev/virtualenvs). 
 
-1. `cd analytics`
+If you choose not to use a virtual environment, you'll need to install the dependencies listed in the requirements.txt file.
 
-2. `virtualenv venv`
+1. Clone the demo files
+        
+        git clone https://github.com/lizkrznarich/OR2016.git
 
-3. `source ./venv/bin/activate` nix systesm `\venv\bin\activate` windows
+2. Change to the analytics directory
+        
+        cd OR2106/analytics
 
-4. `pip2 install -r requirements.txt` 
+3. Install virtualenv
+
+        pip install virtualenv
+
+2. Create a new virtual environment
+
+        virtualenv venv
+
+3. Activate the new virtual environment
+        
+        source ./venv/bin/activate
+
+4. Install the project dependencies in the virtual environment
+
+        pip2 install -r requirements.txt 
 
 ## Create config file 
 
@@ -38,14 +56,13 @@ The project contains a requirements.txt file that allows you to run the scripts 
 
 2. Edit config.py to include default values for your Google Drive folder ID, p12 file location, Google Analytics view ID, and Google service account email 
 
-    vim config.py
+        vim config.py
 
 Your final config.py file should look something like:
     
     import argparse
     import time
     import calendar
-
     parser = argparse.ArgumentParser()
     parser.add_argument('--folder_id', default='0Bs0lFl2y-hZudnEvTDJZV63V2RpD', type=str)
     parser.add_argument('--secret_file_location', default='my_google_cred_secret_file.p12', type=str)
@@ -64,10 +81,15 @@ Your final config.py file should look something like:
     profile_id='ga:123456789'
     service_account_email='my-service-account-username@my-project-name.iam.gserviceaccount.com'
 
+## Edit Analytics queries
+Edit the start_date, end_date, metrics, dimensions, and filters arguments for the run_query function in google_analytics.py to match your query parameters. 
+
+        data = run_query(service, start_date, end_date, 'ga:totalEvents', 'ga:eventLabel', 'ga:eventAction==download')
+
 ## Create reports
 Run the build_report.py script, passing in the appropriate arguments:
 
-`python build_report.py --start_date='2016-05-01' --end_date='2016-05-31'`
+        python build_report.py --start_date='2016-05-01' --end_date='2016-05-31'
 
 ### Available args
 

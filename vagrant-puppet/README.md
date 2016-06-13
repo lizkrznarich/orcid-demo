@@ -12,7 +12,7 @@ See the [slides](orcid-or2016-vagrant-puppet.pdf) for a brief intro to Vagrant a
         
         git clone https://github.com/lizkrznarich/OR2016.git
 
-2. Change to the demo files directory
+2. Change to the vagrant-puppet directory
         
         cd OR2106/vagrant-puppet
 
