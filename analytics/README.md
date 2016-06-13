@@ -17,14 +17,15 @@ Slides that explain these pre-requesites are located at
 
 
 ## Set up virtual environment 
+The project contains a requirements.txt file that allows you to run the scripts using a [Python Virtual Environment](http://docs.python-guide.org/en/latest/dev/virtualenvs)
 
-5. `cd analytics`
+1. `cd analytics`
 
-6. `virtualenv venv`
+2. `virtualenv venv`
 
-7. `source ./venv/bin/activate` nix systesm `\venv\bin\activate` windows
+3. `source ./venv/bin/activate` nix systesm `\venv\bin\activate` windows
 
-8. `pip2 install -r requirements.txt` 
+4. `pip2 install -r requirements.txt` 
 
 ## Create config file 
 
