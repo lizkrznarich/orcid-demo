@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Sync a host directory to a location on the guest
-  config.vm.synced_folder "./my-project", "/var/www/html"
+  config.vm.synced_folder "./my-project", "/var/www/html/my-project"
 
   # Enable the Puppet provisioner and specify the manifest location
   config.vm.provision :puppet do |puppet|     
