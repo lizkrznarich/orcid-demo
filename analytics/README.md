@@ -1,5 +1,5 @@
-#Beyond the Dashboard: Customized Analytics Reporting with Google APIs
-Python script for a demo presented at OR2016. This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as well as the ORCID Public API, to generate a custom analytics report, upload it to Drive and add external data from ORCID.
+#API Extravaganza! Combining Google Analytics & ORCID APIs
+This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as well as the ORCID Public API, to generate a custom analytics report, upload it to Drive and add external data from ORCID.
 
 See the [slides](orcid-or2016-ga.pdf) for a complete tutorial!
 

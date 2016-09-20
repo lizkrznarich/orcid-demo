@@ -9,28 +9,56 @@ import urllib
 import json
 
 def get_orcid_data(dois):
+    token = get_orcid_token()
     dois_orcid_counts  = []
     for doi in dois:
-        orcid_count = search_orcid_doi(doi)
+        orcid_count = search_orcid_doi(doi, token)
         dois_orcid_counts.append([doi, orcid_count])
     return dois_orcid_counts
 
-def search_orcid_doi(doi):
+def get_orcid_token():
+    #set request variables
+    client_id = config.orcid_client_id
+    client_secret = config.orcid_client_secret
+    token_endpoint = config.token_endpoint
+    data = BytesIO()
+    #create post data
+    post_data = {'client_id': client_id, 'client_secret': client_secret, 'scope': '/read-public', 'grant_type': 'client_credentials'}
+    #url encode post data
+    postfields = urllib.urlencode(post_data)
+    #create and send http request
+    c = pycurl.Curl()
+    c.setopt(c.URL, token_endpoint)
+    c.setopt(c.HTTPHEADER, ['Accept: application/json'])
+    c.setopt(c.POSTFIELDS, postfields)
+    c.setopt(c.WRITEFUNCTION, data.write)
+    c.perform()
+    c.close()
+    #get request response
+    json_object = json.loads(data.getvalue())
+    token = json_object['access_token']
+    return token
+
+def search_orcid_doi(doi, token):
+    #set request variables
     base_url = config.endpoint
     api_version = 'v1.2'
     search_endpoint = 'search/orcid-bio/?'
-    query = {'defType' : 'edismax', 'q' : 'digital-object-ids:' + '"' + doi + '"'}
-    encoded_query = urllib.urlencode(query)
-    request_string = base_url + '/' + api_version + '/' + search_endpoint + encoded_query
     data = BytesIO()
+    query = {'defType' : 'edismax', 'q' : 'digital-object-ids:' + '"' + doi + '"'}
+    #url encode query
+    encoded_query = urllib.urlencode(query)
+    #create request string
+    request_string = base_url + '/' + api_version + '/' + search_endpoint + encoded_query
+    #create and send http request
     c = pycurl.Curl()
     c.setopt(c.URL, request_string)
-    c.setopt(c.HTTPHEADER, ['Content-Type: application/orcid+xml', 'Accept: application/json'])
+    c.setopt(c.HTTPHEADER, ['Content-Type: application/orcid+xml', 'Accept: application/json', 'Authorization: Bearer %s' % token])
     c.setopt(c.POST, 0)
     c.setopt(c.WRITEFUNCTION, data.write)
     c.perform()
     c.close()
-    #return json.loads(data.getvalue())
+    #get request response
     json_object = json.loads(data.getvalue())
     search_results = json_object['orcid-search-results']
     num_results = search_results["num-found"]
