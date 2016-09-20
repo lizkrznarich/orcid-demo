@@ -4,7 +4,7 @@ This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as w
 See the [slides](orcid-or2016-ga.pdf) for a complete tutorial!
 
 ## Demo site
-A demo site that has Google Analytics tracking configured and displays data using this script is located at http://orcid.github.io/or2016-ga
+A demo site that has Google Analytics tracking configured and displays data using this script is located at http://orcid.github.io/analytics-demo
 
 ## Pre-requisites 
 This list is daunting. See the [slides](orcid-or2016-ga.pdf) for a step-by-step guide (with pictures!)
