@@ -1,13 +1,13 @@
 #API Extravaganza! Combining Google Analytics & ORCID APIs
 This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as well as the ORCID Public API, to generate a custom analytics report, upload it to Drive and add external data from ORCID.
 
-See the [slides](orcid-or2016-ga.pdf) for a complete tutorial!
+See the [slides](22sep2016-ands-api-extravaganza.pdf) for a complete tutorial!
 
 ## Demo site
 A demo site that has Google Analytics tracking configured and displays data using this script is located at http://orcid.github.io/analytics-demo
 
 ## Pre-requisites 
-This list is daunting. See the [slides](orcid-or2016-ga.pdf) for a step-by-step guide (with pictures!)
+This list is daunting. See the [slides](22sep2016-ands-api-extravaganza.pdf) for a step-by-step guide (with pictures!)
 
 1. Create a [Google Analytics](https://analytics.google.com) account and set up tracking for your website
 2. Develop Google Analytics queries using the [Analytics API](https://developers.google.com/analytics/devguides/reporting/core/v3/reference)
@@ -70,16 +70,25 @@ Your final config.py file should look something like:
     #enter dates as Y-m-d like 2016-05-31
     parser.add_argument('--start_date', type=str)
     parser.add_argument('--end_date', type=str)
+    parser.add_argument('--orcid_client_id', default='APP-XXXXXXXXXXXX', type=str)
+    parser.add_argument('--orcid_client_secret', default='3a87028d-c84c-4d5f-8ad5-38a93181c9e1', type=str)
     args = parser.parse_args()
     folder_id = args.folder_id
+    secret_file_location = args.secret_file_location
+    report_date_Y_m_d = args.report_date_Y_m_d 
     start_date = args.start_date
     end_date = args.end_date
-    report_date_Y_m_d = args.report_date_Y_m_d 
-    secret_file_location = args.secret_file_location
+    orcid_client_id = args.orcid_client_id
+    orcid_client_secret = args.orcid_client_secret
     #global settings
-    endpoint='https://pub.orcid.org'
+    search_endpoint='https://pub.orcid.org'
+    token_endoint='https://orcid.org/oauth/token'
     profile_id='ga:123456789'
     service_account_email='my-service-account-username@my-project-name.iam.gserviceaccount.com'
+
+
+
+
 
 ## Edit Analytics queries
 Edit the start_date, end_date, metrics, dimensions, and filters arguments for the run_query function in google_analytics.py to match your query parameters. 

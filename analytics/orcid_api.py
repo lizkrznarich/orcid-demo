@@ -41,7 +41,7 @@ def get_orcid_token():
 
 def search_orcid_doi(doi, token):
     #set request variables
-    base_url = config.endpoint
+    base_url = config.search_endpoint
     api_version = 'v1.2'
     search_endpoint = 'search/orcid-bio/?'
     data = BytesIO()

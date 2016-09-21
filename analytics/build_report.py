@@ -21,7 +21,7 @@ def main():
   orcid_data = orcid.get_orcid_data(repo_dois)
   #Create a CSV file with Analytics data
   filedata = ga.create_csv(ga_service, config.report_date_Y_m_d, config.start_date, config.end_date, repo_dois)
-  filename = "or2016_ga_demo_" + config.report_date_Y_m_d
+  filename = "analytics-demo_" + config.report_date_Y_m_d
   #Create CSV to Google Drive
   drive_file = gd.upload_csv_from_memory(filename, gd_service, filedata, config.folder_id)
   #Edit CSV with Gspread to add ORCID API data
