@@ -26,11 +26,11 @@ If you choose not to use a virtual environment, you'll need to install the depen
 
 1. Clone the demo files
         
-        git clone https://github.com/lizkrznarich/OR2016.git
+        git clone git@github.com:lizkrznarich/orcid-demo.git
 
 2. Change to the analytics directory
         
-        cd OR2106/analytics
+        cd orcid-demo/analytics
 
 3. Install virtualenv
 
@@ -86,10 +86,6 @@ Your final config.py file should look something like:
     profile_id='ga:123456789'
     service_account_email='my-service-account-username@my-project-name.iam.gserviceaccount.com'
 
-
-
-
-
 ## Edit Analytics queries
 Edit the start_date, end_date, metrics, dimensions, and filters arguments for the run_query function in google_analytics.py to match your query parameters. 
 
@@ -112,11 +108,22 @@ Run the build_report.py script, passing in the appropriate arguments:
 
 **--end_date**  End date for Google Analytics queries YYYY-mm-dd
 
+**--orcid_client_id**  ORCID APID client ID 
+
+**--orcid_client_secret**  ORCID APID client secret
+
+_For info on setting up ORCID API credentials, see [Accessing the ORCID Public API](https://members.orcid.org/api/accessing-public-api)_
+
 ##Resources
 - [Google Analytics Query Explorer](https://ga-dev-tools.appspot.com/quer y-explorer/)
-- [Google Analytics Core Reporting API documentation](https://developers.google.com/analytics/devguides/reporting/core/v3)
+- [Google Analytics Dimensions & Metrics Explorer](https://developers.google.com/analytics/devguides/reporting/core/dimsmets)
+- [Google Developer Console](https://console.developers.google.com)
+- [Google Analytics Core Reporting API documentation](https://developers.google.com/analytics/devguides/reporting/core/v4)
 - [Google Drive API documentation](https://developers.google.com/drive/v3)
 - [ORCID Search API documentation](https://members.orcid.org/api/tutorial-searching-api-12-and-earlier)
 - [Gspread documentation](http://gspread.readthedocs.io)
 - [Google Sheets API documentation](https://developers.google.com/sheets)
 - [Google Charts API documentation](https://developers.google.com/chart)
+- [ORCID API documentation](http://members.orcid.org/api)
+- [ORCID Search API tutorial](http://members.orcid.org/api/tutorial-searching-data-using-api)
+- [ORCID API app examples and code libraries](http://members.orcid.org/api/code-examples)
