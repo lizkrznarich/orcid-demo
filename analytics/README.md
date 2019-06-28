@@ -1,4 +1,4 @@
-#API Extravaganza! Combining Google Analytics & ORCID APIs
+# API Extravaganza! Combining Google Analytics & ORCID APIs
 This script uses the Google Analytics, Drive and Sheets (via GSpread) APIs, as well as the ORCID Public API, to generate a custom analytics report, upload it to Drive and add external data from ORCID.
 
 See the [slides](22sep2016-ands-api-extravaganza.pdf) for a complete tutorial!
