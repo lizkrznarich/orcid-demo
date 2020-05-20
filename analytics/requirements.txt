@@ -1,5 +1,5 @@
 gspread == 0.3.0
-httplib2 == 0.9.2
+httplib2 == 0.18.0
 pycurl == 7.19.5.3
 unicodecsv == 0.14.1
 google_api_python_client == 1.5.1
